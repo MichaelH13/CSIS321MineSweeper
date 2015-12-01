@@ -20,7 +20,7 @@ public class Field
       System.out.println("Field(int size) NYD");
    }
    
-   public Field(int size, int minePercentage)
+   public Field(int size)
    {
       System.out.println("Field(int size, int minePercentage) NYD");
    }
