@@ -1,4 +1,4 @@
-import Field.java
+import Field.java;
 
 /**
  * @author Michael
@@ -10,22 +10,32 @@ import Field.java
  */
 public class Game
 {
-   private Field _theField;
+   private static Field _theField;
    
+   /**
+    * Creates an instance of a game of Minesweeper
+    */
    public Game()
    {
       // TODO
       System.out.println("Game() NYD");
    }
    
+   /**
+    * Returns a reference to the field
+    * 
+    * @return a reference to the field
+    */
    public static Field getField()
    {
-      // TODO
-      System.out.println("getField() NYD");
-      
-      return null;
+      return _theField;
    }
    
+   /**
+    * 
+    * @param f
+    * @return
+    */
    public boolean didRevealBomb(Field f)
    {
       // TODO
@@ -34,18 +44,28 @@ public class Game
       return false;
    }
    
+   /**
+    * 
+    */
    public void blowUp()
    {
       // TODO
       System.out.println("blowUp() NYD");
    }
    
+   /**
+    * 
+    */
    public void winner()
    {
       // TODO
       System.out.println("winner() NYD");
    }
    
+   /**
+    * 
+    * @return
+    */
    public int getYRowsMove()
    {
       // TODO
@@ -54,6 +74,10 @@ public class Game
       return -1;
    }
    
+   /**
+    * 
+    * @return
+    */
    public int getXColumnsMove()
    {
       // TODO
@@ -62,16 +86,24 @@ public class Game
       return -1;
    }
    
+   /**
+    * Returns a String representation of the field, courtesy of the Field's
+    * toString method
+    * 
+    * @return a String representation of the field
+    */
    public String toString()
    {
-      // TODO
-      System.out.println("toString() NYD");
-      
-      return null;
+      return _theField.toString();
    }
-}
 
-public static void main(String[] args)
-{
-   System.out.println("MUST FIGURE OUT HOW TO RUN ECLIPSE WITH GIT.");
+   /**
+    * The main algorithm to play a game of Minesweeper in the command line
+    * @param args
+    */
+   public static void main(String[] args)
+   {
+      System.out.println("MUST FIGURE OUT HOW TO RUN ECLIPSE WITH GIT.");
+   }
+   
 }
