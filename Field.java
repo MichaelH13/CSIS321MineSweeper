@@ -13,6 +13,7 @@ public class Field
 {
    private int _yRows;
    private int _xColumns;
+   private Tile[][] _field;
    
    public Field(int size)
    {
