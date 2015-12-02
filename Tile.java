@@ -1,11 +1,9 @@
 import Game;
-
 /**
  * @author Keiko
  *
  * Class for representing a Minesweeper Tile.
  */
-
 public class Tile
 {
     /**
@@ -75,19 +73,33 @@ public class Tile
         // Get the neighbors of the Tile
         Tile[] neighbors = Game.getField().getNeighbors(this);
         
-        // Count the number of neighbors that are bombs
         int volatileNeighbors = 0;
         
-        for (Tile neighbor : neighbors)
+        String bombToString;
+        
+        /**
+         * Count the number of neighbors that are bombs if the space itself
+         * is not a bomb. Otherwise, just display a !
+         */
+        
+        if (!isBomb())
         {
-            if (neighbor.isBomb())
+            for (Tile neighbor : neighbors)
             {
-                volatileNeighbors++;
+                if (neighbor.isBomb())
+                {
+                    volatileNeighbors++;
+                }
             }
+            bombToString = (" " + volatileNeighbors + " |");
+        }
+        else
+        {
+            bombToString = (" ! |");
         }
         
         // Return the string representation of the tile
-        return (" " + volatileNeighbors + " |");
+        return bombToString;
     }
     private boolean _isBomb;
     private boolean _isRevealed;
