@@ -66,24 +66,9 @@ public class Game
     * 
     * @return
     */
-   public int getYRowsMove()
+   public void makeMove(yRow, xColumn)
    {
-      // TODO
-      System.out.println("getYRowsMove() NYD");
-      
-      return -1;
-   }
-   
-   /**
-    * 
-    * @return
-    */
-   public int getXColumnsMove()
-   {
-      // TODO
-      System.out.println("getXColumnsMove() NYD");
-      
-      return -1;
+      _theField.revealTile(_theField.tileAt(yRow, xColumn));
    }
    
    /**
