@@ -17,8 +17,8 @@ public class Field
    private int _xColumns;
    private Tile[][] _field;
    
-   public static final int DEFAULT_BOMB_RATE = 30;
-   public static final int DEFAULT_FIELD_SIZE = 5;
+   public static final int DEFAULT_BOMB_RATE = 15;
+   public static final int DEFAULT_FIELD_SIZE = 7;
    
    // Return values for revealed tiles
    public static final int TILE_REVEALED_NORMAL = 0;
@@ -63,9 +63,9 @@ public class Field
       // Fill the field with tiles
       for (int i = 0; i < _yRows; i++)
       {
-         for (int j = 0; j < _xColumns; i++)
+         for (int j = 0; j < _xColumns; j++)
          {
-            if (random.nextInt(99) <= minePercentage)
+            if (random.nextInt(100) <= minePercentage)
             {
                isBomb = true;
             }
@@ -229,7 +229,7 @@ public class Field
        */
       for (int i = 0; i < _yRows; i++)
       {
-         for (int j = 0; j < _xColumns; i++)
+         for (int j = 0; j < _xColumns; j++)
          {
             if ( (_field[i][j].isBomb() == true 
                   && _field[i][j].isRevealed() == true) 
@@ -302,7 +302,7 @@ public class Field
          outputString.append("-\n");
          
          // Open the row of tiles
-         outputString.append("|");
+         outputString.append(i + 1);
          
          // Row of pipe-separated tiles
          for (int j = 0; j < _xColumns; j++)

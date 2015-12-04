@@ -1,4 +1,4 @@
-import Game;
+//import Game;
 /**
  * @author Keiko
  *
@@ -83,7 +83,7 @@ public class Tile
         
         int volatileNeighbors = 0;
         
-        String bombToString = " ";
+        String bombToString = " # |";
         
         /*
          * If the tile has been revealed, count the number of neighbors that 

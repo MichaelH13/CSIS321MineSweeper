@@ -15,6 +15,8 @@ public class Game
 {
    private static Field _theField;
    
+   private boolean _hasDetonated;
+   
    public static final String USAGE_INFO = "" +
       "Usage: \njava Minesweeper\njava Minesweeper [field size]\n"
       + "java Minesweeper [y dimension] [x dimension] or\n"
@@ -63,19 +65,27 @@ public class Game
       {
          switch (argCount)
          {
-            case 0 : _theField = new Field();
-            case 1 : _theField = new Field(Integer.parseInt(args[0]));
-            case 2 : _theField = new Field(Integer.parseInt(args[0]), 
+            case 0: _theField = new Field();
+                    break;
+            case 1: _theField = new Field(Integer.parseInt(args[0]));
+                    break;
+            case 2: _theField = new Field(Integer.parseInt(args[0]), 
                   Integer.parseInt(args[1]));
-            case 3 : _theField = new Field(Integer.parseInt(args[0]), 
+                    break;
+            case 3: _theField = new Field(Integer.parseInt(args[0]), 
                   Integer.parseInt(args[1]), Integer.parseInt(args[2]));
+                    break;
+            default: System.err.println("Too many arguments");
+                     throw new NumberFormatException();
          }
       }
       catch (NumberFormatException e)
       {
          System.err.println(USAGE_INFO);
-         throw new DataFormatException();
+         throw new DataFormatException("INVALID ARGS");
       }
+      
+      _hasDetonated = false;
    }
    
    /**
@@ -87,37 +97,59 @@ public class Game
    {
       return _theField;
    }
+
+   
+//   /**
+//    * Reveals all tiles, showing what was a bomb, and notifies the player that
+//    * they have lost the game
+//    */
+//   public void blowUp()
+//   {
+//      for (int i = 0; i < _theField.getYRows(); i++)
+//      {
+//         for (int j = 0; j < _theField.getXColumns(); j++)
+//         {
+//            _theField.revealTile(_theField.getTileAt(i, j));
+//         }
+//      }
+//      _hasDetonated = true;
+//      System.out.println(LOSE_NOTIFICATION);
+//   }
+//   
+//   /**
+//    * Reveals all tiles, showing mines, and notifies the player that they have 
+//    * won the game
+//    */
+//   public void winner()
+//   {
+//      revealField()
+//      System.out.println("winner() NYD");
+//   }
    
    /**
-    * 
-    * @param f
-    * @return
+    * Reveals all bombs and notifies the player of whether or not they won
     */
-   public boolean didRevealBomb(Field f)
+   public void resolveGame()
    {
-      // TODO
-      System.out.println("didRevealBomb(f) NYD");
+      for (int i = 0; i < _theField.getYRows(); i++)
+      {
+         for (int j = 0; j < _theField.getXColumns(); j++)
+         {
+            if (_theField.getTileAt(i, j).isBomb())
+               _theField.revealTile(_theField.getTileAt(i, j));
+         }
+      }
       
-      return false;
-   }
-   
-   /**
-    * Reveals all tiles, showing what was a bomb, and notifies the player that
-    * they have lost the game
-    */
-   public void blowUp()
-   {
-      // TODO
-      System.out.println("blowUp() NYD");
-   }
-   
-   /**
-    * 
-    */
-   public void winner()
-   {
-      // TODO
-      System.out.println("winner() NYD");
+      if (_hasDetonated)
+      {
+         System.out.println(LOSE_NOTIFICATION);
+      }
+      else
+      {
+         System.out.println(WIN_NOTIFICATION);
+      }
+      
+      System.out.println(_theField.toString());
    }
    
    /**
@@ -126,7 +158,17 @@ public class Game
     */
    public void makeMove(int yRow, int xColumn)
    {
-      _theField.revealTile(_theField.getTileAt(yRow, xColumn));
+      int moveResult = _theField.revealTile(_theField.getTileAt(yRow, xColumn));
+      
+      if (moveResult == Field.TILE_REVEALED_BOMB)
+      {
+         _hasDetonated = true;
+      }
+      
+      if (moveResult == Field.TILE_PREVIOUSLY_REVEALED)
+      {
+         System.out.println("You have already used this tile");
+      }
    }
    
    
@@ -136,8 +178,12 @@ public class Game
     */
    public boolean isOver()
    {
-      boolean gameOver = false;
+      boolean gameOver = _hasDetonated;
       
+      if (!gameOver)
+      {
+         gameOver = _theField.isWinner();
+      }
       
       return gameOver;
    }
@@ -165,6 +211,8 @@ public class Game
       int yMove = 0;
       int xMove = 0;
       
+      // Until the game ends, have the user select tiles until they hit a mine,
+      // or they have revealed all non-mine tiles
       while (!theGame.isOver())
       {
          // Get a valid move
@@ -197,9 +245,11 @@ public class Game
             }
          }
          
-         theGame.makeMove(yMove, xMove);
+         theGame.makeMove(yMove - 1, xMove - 1);
       }
       in.close();
+      
+      theGame.resolveGame();
       
       System.out.println("Thanks for playing!");
    }
