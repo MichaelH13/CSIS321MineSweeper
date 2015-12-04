@@ -245,23 +245,25 @@ public class Field
          // Row of sep dashes
          for (int j = 0; j < _xColumns; j++)
          {
-            outputString.append("--");
+            outputString.append("----");
          }
          outputString.append("-\n");
          
-         // Row of pipe-separated dashes
+         // Open the row of tiles
+         outputString.append("|");
+         
+         // Row of pipe-separated tiles
          for (int j = 0; j < _xColumns; j++)
          {
-            outputString.append("|");
-            outputString.append(getTileAt(i, j));
+            outputString.append(getTileAt(i, j).toString());
          }
-         outputString.append("|\n");
+         outputString.append("\n");
       }
       
       // Bottom border of dashes
       for (int j = 0; j < _xColumns; j++)
       {
-         outputString.append("--");
+         outputString.append("----");
       }
       outputString.append("-\n");
       
