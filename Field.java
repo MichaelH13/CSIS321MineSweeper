@@ -19,25 +19,30 @@ public class Field
    
    public static final int DEFAULT_BOMB_RATE = 30;
    
+   // Return values for revealed tiles
    public static final int TILE_REVEALED_NORMAL = 0;
    public static final int TILE_REVEALED_BOMB = 1;
    public static final int TILE_PREVIOUSLY_REVEALED = 2;
    
    /**
-    * Creates a field with the given square size and 
+    * Creates a Field with the given square size and default bomb odds
     */
    public Field(int size)
    {
       this(size, size);
    }
    
-   
+   /**
+    * Creates a Field with given rows and columns, and default bomb odds
+    */
    public Field(int yRows, int xColumns)
    {
-      this(yRows, xColumns, 30);
+      this(yRows, xColumns, DEFAULT_BOMB_RATE);
    }
    
-   
+   /**
+    * Creates a field with given dimensions and bomb odds
+    */
    public Field(int yRows, int xColumns, int minePercentage)
    {
       _yRows = yRows;
@@ -46,6 +51,7 @@ public class Field
       Random random = new Random();
       boolean isBomb = false;
       
+      // Fill the field with tiles
       for (int i = 0; i < _yRows; i++)
       {
          for (int j = 0; j < _xColumns; i++)
@@ -61,6 +67,11 @@ public class Field
    }
    
    
+   /**
+    * Returns the tile at given coordinates
+    * 
+    * @
+    */
    public Tile getTileAt(int yRow, int xColumn)
    {
       return _field[yRow][xColumn];
@@ -175,6 +186,7 @@ public class Field
    
    /**
     * Returns the number of "rows" in the field
+    * 
     * @return the number of "rows"
     */
    public int getYRows()
@@ -184,6 +196,7 @@ public class Field
    
    /**
     * Returns the number of "columns" in the field
+    * 
     * @return the number of "columns"
     */
    public int getXColumns()
@@ -191,10 +204,20 @@ public class Field
       return _xColumns;
    }
    
+   /**
+    * Returns true if all non-bomb tiles have been revealed, false otherwise
+    * 
+    * @return true if all non-bomb tiles have been revealed, false otherwise
+    */
    public boolean isWinner()
    {
       boolean win = true;
       
+      /*
+       * Check all tiles
+       * If a bomb has been revealed or a non-bomb has not been revealed, the 
+       * game has not been won
+       */
       for (int i = 0; i < _yRows; i++)
       {
          for (int j = 0; j < _xColumns; i++)
@@ -229,6 +252,7 @@ public class Field
             returnStatus = TILE_REVEALED_BOMB;
          }
          
+         // If the tile was not revealed before, it is now
          t.reveal();
       }
       else
@@ -242,13 +266,13 @@ public class Field
    
    /**
     * Returns a String representing the field in the form
-    * -------
-    * |t|t|t|
-    * -------
-    * |t|t|t|
-    * -------
-    * |t|t|t|
-    * -------
+    * -------------
+    * | t | t | t |
+    * -------------
+    * | t | t | t |
+    * -------------
+    * | t | t | t |
+    * -------------
     * 
     * @return a String representing the field
     */
