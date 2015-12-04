@@ -18,11 +18,20 @@ public class Field
    private Tile[][] _field;
    
    public static final int DEFAULT_BOMB_RATE = 30;
+   public static final int DEFAULT_FIELD_SIZE = 5;
    
    // Return values for revealed tiles
    public static final int TILE_REVEALED_NORMAL = 0;
    public static final int TILE_REVEALED_BOMB = 1;
    public static final int TILE_PREVIOUSLY_REVEALED = 2;
+   
+   /**
+    * Creates a Field with the default size and bomb odds
+    */
+   public Field()
+   {
+      this(DEFAULT_FIELD_SIZE);
+   }
    
    /**
     * Creates a Field with the given square size and default bomb odds

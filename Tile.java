@@ -83,27 +83,30 @@ public class Tile
         
         int volatileNeighbors = 0;
         
-        String bombToString;
+        String bombToString = " ";
         
-        /**
-         * Count the number of neighbors that are bombs if the space itself
-         * is not a bomb. Otherwise, just display a !
+        /*
+         * If the tile has been revealed, count the number of neighbors that 
+         * are bombs if the space itself is not a bomb. Otherwise, just 
+         * display a "!"
          */
-        
-        if (!isBomb())
+        if (_isRevealed)
         {
-            for (Tile neighbor : neighbors)
-            {
-                if (neighbor.isBomb())
-                {
+           if (!isBomb())
+           {
+              for (Tile neighbor : neighbors)
+              {
+                 if (neighbor.isBomb())
+                 {
                     volatileNeighbors++;
-                }
-            }
-            bombToString = (" " + volatileNeighbors + " |");
-        }
-        else
-        {
-            bombToString = (" ! |");
+                 }
+              }
+              bombToString = (" " + volatileNeighbors + " |");
+           }
+           else
+           {
+              bombToString = (" ! |");
+           }
         }
         
         // Return the string representation of the tile
