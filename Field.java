@@ -17,7 +17,7 @@ public class Field
    private int _xColumns;
    private Tile[][] _field;
    
-   public static final int DEFAULT_BOMB_RATE = 15;
+   public static final int DEFAULT_BOMB_RATE = -1;
    public static final int DEFAULT_FIELD_SIZE = 7;
    
    // Return values for revealed tiles
@@ -256,13 +256,20 @@ public class Field
       
       if (!t.isRevealed())
       {
+      // If the tile was not revealed before, it is now
+         t.reveal(); 
+         
          if (t.isBomb())
          {
             returnStatus = TILE_REVEALED_BOMB;
          }
-         
-         // If the tile was not revealed before, it is now
-         t.reveal();
+         else
+         {
+            if (t.getVolatileNeighbors() == 0)
+            {
+               
+            }
+         }
       }
       else
       {

@@ -208,13 +208,16 @@ public class Game
    {
       Scanner in = new Scanner(System.in);
       Game theGame = new Game(args.length, args);
-      int yMove = 0;
-      int xMove = 0;
+      int yMove;
+      int xMove;
       
       // Until the game ends, have the user select tiles until they hit a mine,
       // or they have revealed all non-mine tiles
       while (!theGame.isOver())
       {
+         yMove = 0;
+         xMove = 0;
+         
          // Get a valid move
          while (yMove == 0 || xMove == 0)
          {

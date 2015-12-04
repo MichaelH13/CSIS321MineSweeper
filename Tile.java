@@ -63,6 +63,25 @@ public class Tile
         return _y;
     }
     
+    public int getVolatileNeighbors()
+    {
+    // Get the neighbors of the Tile
+       Tile[] neighbors = Game.getField().getNeighbors(this);
+       
+       int volatileNeighbors = 0;
+       
+       // Count volatile neighbors
+       for (Tile neighbor : neighbors)
+       {
+          if (neighbor.isBomb())
+          {
+             volatileNeighbors++;
+          }
+       }
+       
+       return volatileNeighbors;
+    }
+    
     /**
      * Marks a tile as revealed
      */
@@ -77,12 +96,7 @@ public class Tile
      * @return The Tile turned into a string
      */
     public String toString()
-    {
-        // Get the neighbors of the Tile
-        Tile[] neighbors = Game.getField().getNeighbors(this);
-        
-        int volatileNeighbors = 0;
-        
+    {   
         String bombToString = " # |";
         
         /*
@@ -94,14 +108,8 @@ public class Tile
         {
            if (!isBomb())
            {
-              for (Tile neighbor : neighbors)
-              {
-                 if (neighbor.isBomb())
-                 {
-                    volatileNeighbors++;
-                 }
-              }
-              bombToString = (" " + volatileNeighbors + " |");
+              
+              bombToString = (" " + getVolatileNeighbors() + " |");
            }
            else
            {
