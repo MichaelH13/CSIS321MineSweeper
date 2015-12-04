@@ -63,7 +63,7 @@ public class Game
    }
    
    /**
-    * 
+    * Makes a move on a given tile
     * @return
     */
    public void makeMove(yRow, xColumn)

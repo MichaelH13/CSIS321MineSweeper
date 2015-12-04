@@ -17,7 +17,15 @@ public class Field
    private int _xColumns;
    private Tile[][] _field;
    
+   public static final int DEFAULT_BOMB_RATE = 30;
    
+   public static final int TILE_REVEALED_NORMAL = 0;
+   public static final int TILE_REVEALED_BOMB = 1;
+   public static final int TILE_PREVIOUSLY_REVEALED = 2;
+   
+   /**
+    * Creates a field with the given square size and 
+    */
    public Field(int size)
    {
       this(size, size);
@@ -204,20 +212,31 @@ public class Field
       return win;
    }
    
-   
-   public void revealTile(Tile t)
+   /**
+    * Used to reveal a selected tile. Returns an int indicating the outcome
+    * of the reveal attempt
+    * 
+    * @return an int representing the outcome of the reveal
+    */
+   public int revealTile(Tile t)
    {
-      if (! t.isRevealed())
+      int returnStatus = TILE_REVEALED_NORMAL;
+      
+      if (!t.isRevealed())
       {
          if (t.isBomb())
          {
-            System.out.println("You hit a bomb. You lost. ");
+            returnStatus = TILE_REVEALED_BOMB;
          }
-         else
-         {
-            
-         }
+         
+         t.reveal();
       }
+      else
+      {
+         returnStatus = TILE_PREVIOUSLY_REVEALED;
+      }
+      
+      return returnStatus;
    }
    
    

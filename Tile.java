@@ -64,6 +64,14 @@ public class Tile
     }
     
     /**
+     * Marks a tile as revealed
+     */
+    public void reveal()
+    {
+       _isRevealed = true;
+    }
+    
+    /**
      * A method to get the string representation of the Tile
      *
      * @return The Tile turned into a string
@@ -101,6 +109,7 @@ public class Tile
         // Return the string representation of the tile
         return bombToString;
     }
+    
     private boolean _isBomb;
     private boolean _isRevealed;
     private int _x;
