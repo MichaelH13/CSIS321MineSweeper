@@ -61,9 +61,9 @@ public class Field
       // Fill the field with tiles
       for (int i = 0; i < _yRows; i++)
       {
-         for (int j = 0; j < _xColumns; i++)
+         for (int j = 0; j < _xColumns; j++)
          {
-            if (random.nextInt(99) <= minePercentage)
+            if (random.nextInt() % 100 <= minePercentage)
             {
                isBomb = true;
             }
