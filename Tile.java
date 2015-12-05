@@ -1,4 +1,3 @@
-import Game;
 /**
  * @author Keiko
  *
@@ -79,7 +78,7 @@ public class Tile
     public String toString()
     {
         // Get the neighbors of the Tile
-        Tile[] neighbors = Game.getField().getNeighbors(this);
+        Tile[] neighbors = Game.getTheGame().getField().getNeighbors(this);
         
         int volatileNeighbors = 0;
         

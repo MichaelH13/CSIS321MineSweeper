@@ -1,7 +1,5 @@
 import java.util.Random;
 
-//import Tile.java
-
 /**
  * @author Michael
  * @author Nik
@@ -104,29 +102,29 @@ public class Field
             neighbors[0] = getTileAt(0,1); 
             neighbors[1] = getTileAt(1,1); 
             neighbors[2] = getTileAt(1,0); 
-         } // if
+         }
          
-         if (t.getX() == _xColumns - 1 && t.getY() == 0)
+         else if (t.getX() == _xColumns - 1 && t.getY() == 0)
          {
             neighbors[0] = getTileAt(1,t.getX() - 1); 
             neighbors[1] = getTileAt(1,t.getX() - 2); 
             neighbors[2] = getTileAt(0,t.getX() - 1); 
-         } // if
+         }
          
-         if (t.getX() == _xColumns - 1 && t.getY() == _yRows - 1)
+         else if (t.getX() == _xColumns - 1 && t.getY() == _yRows - 1)
          {
             neighbors[0] = getTileAt(t.getY()-1, t.getX() - 2); 
             neighbors[1] = getTileAt(t.getY()-2, t.getX() - 2); 
             neighbors[2] = getTileAt(t.getY()-2, t.getX() - 1); 
-         } // if
+         } 
          
-         if (t.getX() == 0 && t.getY() == _yRows - 1)
+         else if (t.getX() == 0 && t.getY() == _yRows - 1)
          {
             neighbors[0] = getTileAt(t.getY()-2, 0); 
             neighbors[1] = getTileAt(t.getY()-2, 1); 
             neighbors[2] = getTileAt(t.getY()-1, 1); 
-         } // if
-      } // if
+         } 
+      } 
       
       
       // If the Tile t is at the edge of the field, it has 5 neighbors. 
