@@ -63,11 +63,7 @@ public class Field
       {
          for (int j = 0; j < _xColumns; j++)
          {
-<<<<<<< HEAD
-            if (random.nextInt(100) <= minePercentage)
-=======
             if (random.nextInt() % 100 <= minePercentage)
->>>>>>> origin/master
             {
                isBomb = true;
             }

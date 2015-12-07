@@ -102,25 +102,6 @@ public class Game
       }
       
       _hasDetonated = false;
-=======
-      switch (argCount)
-      {
-         case 0: 
-         {
-            _theField = new Field();
-         }
-         case 1: 
-         {
-            _theField = new Field(Integer.parseInt(args[0]));
-         }
-         case 2: 
-         {
-            _theField = new Field(Integer.parseInt(args[0]), Integer.parseInt(args[1])); 
-         }      
-         case 3: 
-         {
-            _theField = new Field(Integer.parseInt(args[0]),  Integer.parseInt(args[1]), Integer.parseInt(args[2]));
-         }    
       }
    }
    
@@ -131,7 +112,6 @@ public class Game
    public static Game getTheGame()
    {
       return _theGame;
->>>>>>> origin/master
    }
    
    /**
@@ -200,7 +180,6 @@ public class Game
    
    /**
     * Makes a move on a given tile
-    * @return
     */
    public void makeMove(int yRow, int xColumn)
    {
@@ -222,7 +201,6 @@ public class Game
     * Returns a boolean indicating whether the game has been completed
     * @return a boolean indicating whether the game has been completed
     */
-<<<<<<< HEAD
    public boolean isOver()
    {
       boolean gameOver = _hasDetonated;
@@ -233,12 +211,8 @@ public class Game
       }
       
       return gameOver;
-=======
-   public void makeMove(int yRow, int xColumn)
-   {
-      _theField.revealTile(_theField.getTileAt(yRow, xColumn));
->>>>>>> origin/master
    }
+
    
    /**
     * Returns a String representation of the field, courtesy of the Field's
@@ -258,7 +232,6 @@ public class Game
     */
    public static void main(String[] args) throws DataFormatException
    {
-<<<<<<< HEAD
       Scanner in = new Scanner(System.in);
       Game theGame = new Game(args.length, args);
       int yMove;
@@ -308,9 +281,6 @@ public class Game
       theGame.resolveGame();
       
       System.out.println("Thanks for playing!");
-=======
-      _theGame = new Game(args.length, args);
->>>>>>> origin/master
    }
    
 }
