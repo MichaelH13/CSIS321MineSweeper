@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 //import Game;
-=======
->>>>>>> origin/master
 /**
  * @author Keiko
  *
@@ -99,10 +96,7 @@ public class Tile
      * @return The Tile turned into a string
      */
     public String toString()
-    {
-        // Get the neighbors of the Tile
-        Tile[] neighbors = Game.getTheGame().getField().getNeighbors(this);
-        
+    {   
         String bombToString = " # |";
         
         /*

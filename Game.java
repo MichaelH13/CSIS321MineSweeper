@@ -1,11 +1,6 @@
-<<<<<<< HEAD
 import java.util.Scanner;
 import java.util.zip.DataFormatException;
 
-//import Field.java;
-
-=======
->>>>>>> origin/master
 /**
  * @author Michael
  * @author Nik
@@ -17,7 +12,7 @@ import java.util.zip.DataFormatException;
 
 public class Game
 {
-   private Field _theField;
+   private static Field _theField;
    private static Game _theGame;
    
    private boolean _hasDetonated;
@@ -52,15 +47,6 @@ public class Game
             + "      ...... OO! ................. ON! .......\n" 
             + "         ................................\n";
    
-<<<<<<< HEAD
-   public static final String WIN_NOTIFICATION = "" + 
-"        ________                      __         ____.     ___.  ._.\n" +
-"         /  _____/______   ____ _____ _/  |_      |    | ____\\_ |__| |\n" +
-"        /   \\  __\\_  __ \\_/ __ \\\\__  \\\\   __\\     |    |/  _ \\| __ \\ |\n" +
-"        \\    \\_\\  \\  | \\/\\  ___/ / __ \\|  |   /\\__|    (  <_> ) \\_\\ \\|\n" +
-"         \\______  /__|    \\___  >____  /__|   \\________|\\____/|___  /_\n" +
-"                \\/            \\/     \\/                           \\/\\/\n";
-=======
    public static final String WIN_NOTIFICATION = ""
             + "        ________                      __         ____.     ___.  ._.\n"
             + "         /  _____/______   ____ _____ _/  |_      |    | ____\\_ |__| |\n"
@@ -68,7 +54,7 @@ public class Game
             + "        \\    \\_\\  \\  | \\/\\  ___/ / __ \\|  |   /\\__|    (  <_> ) \\_\\ \\|\n"
             + "         \\______  /__|    \\___  >____  /__|   \\________|\\____/|___  /_\n"
             + "                \\/            \\/     \\/                           \\/\\/\n";
->>>>>>> origin/master
+
    
    /**
     * Creates an instance of a game of Minesweeper
@@ -76,7 +62,6 @@ public class Game
     */
    public Game(int argCount, String[] args) throws DataFormatException
    {
-<<<<<<< HEAD
       try
       {
          switch (argCount)
@@ -102,8 +87,8 @@ public class Game
       }
       
       _hasDetonated = false;
-      }
    }
+   
    
    /**
     * Singleton pattern. Only one instance of a game allowed.
@@ -119,7 +104,7 @@ public class Game
     * 
     * @return a reference to the field
     */
-   public Field getField()
+   public static Field getField()
    {
       return _theField;
    }
