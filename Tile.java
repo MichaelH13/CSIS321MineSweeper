@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 //import Game;
+=======
+>>>>>>> origin/master
 /**
  * @author Keiko
  *
@@ -96,8 +99,18 @@ public class Tile
      * @return The Tile turned into a string
      */
     public String toString()
+<<<<<<< HEAD
     {   
         String bombToString = " # |";
+=======
+    {
+        // Get the neighbors of the Tile
+        Tile[] neighbors = Game.getTheGame().getField().getNeighbors(this);
+        
+        int volatileNeighbors = 0;
+        
+        String bombToString = " # |";
+>>>>>>> origin/master
         
         /*
          * If the tile has been revealed, count the number of neighbors that 

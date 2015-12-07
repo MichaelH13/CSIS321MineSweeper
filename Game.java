@@ -1,8 +1,11 @@
+<<<<<<< HEAD
 import java.util.Scanner;
 import java.util.zip.DataFormatException;
 
 //import Field.java;
 
+=======
+>>>>>>> origin/master
 /**
  * @author Michael
  * @author Nik
@@ -11,9 +14,11 @@ import java.util.zip.DataFormatException;
  * 
  *         Class for controlling a game of Minesweeper.
  */
+
 public class Game
 {
-   private static Field _theField;
+   private Field _theField;
+   private static Game _theGame;
    
    private boolean _hasDetonated;
    
@@ -23,30 +28,31 @@ public class Game
       + "java Minesweeper [y dimension] [x dimension] [bomb percent chance]\n"
       + "EX: java Minesweeper 7 5 45";
    
-   public static final String LOSE_NOTIFICATION = "" +    
-"     .... NO! ...                  ... MNO! ...\n" +
-"   ..... MNO!! ...................... MNNOO! ...\n" +
-" ..... MMNO! ......................... MNNOO!! .\n" +
-"..... MNOONNOO!   MMMMMMMMMMPPPOII!   MNNO!!!! .\n" +
-" ... !O! NNO! MMMMMMMMMMMMMPPPOOOII!! NO! ....\n" +
-"    ...... ! MMMMMMMMMMMMMPPPPOOOOIII! ! ...\n" +
-"   ........ MMMMMMMMMMMMPPPPPOOOOOOII!! .....\n" +
-"   ........ MMMMMOOOOOOPPPPPPPPOOOOMII! ...\n" +
-"    ....... MMMMM..    OPPMMP    .,OMI! ....\n" +
-"     ...... MMMM::   o.,OPMP,.o   ::I!! ...\n" +
-"         .... NNM:::.,,OOPM!P,.::::!! ....\n" +
-"          .. MMNNNNNOOOOPMO!!IIPPO!!O! .....\n" +
-"         ... MMMMMNNNNOO:!!:!!IPPPPOO! ....\n" +
-"           .. MMMMMNNOOMMNNIIIPPPOO!! ......\n" +
-"          ...... MMMONNMMNNNIIIOO!..........\n" +
-"       ....... MN MOMMMNNNIIIIIO! OO ..........\n" +
-"    ......... MNO! IiiiiiiiiiiiI OOOO ...........\n" +
-"  ...... NNN.MNO! . O!!!!!!!!!O . OONO NO! ........\n" +
-"   .... MNNNNNO! ...OOOOOOOOOOO .  MMNNON!........\n" +
-"   ...... MNNNNO! .. PPPPPPPPP .. MMNON!........\n" +
-"      ...... OO! ................. ON! .......\n" +
-"         ................................\n";
+   public static final String LOSE_NOTIFICATION = ""
+            + "     .... NO! ...                  ... MNO! ...\n"
+            + "   ..... MNO!! ...................... MNNOO! ...\n"
+            + " ..... MMNO! ......................... MNNOO!! .\n" 
+            + "..... MNOONNOO!   MMMMMMMMMMPPPOII!   MNNO!!!! .\n"
+            + " ... !O! NNO! MMMMMMMMMMMMMPPPOOOII!! NO! ....\n" 
+            + "    ...... ! MMMMMMMMMMMMMPPPPOOOOIII! ! ...\n"
+            + "   ........ MMMMMMMMMMMMPPPPPOOOOOOII!! .....\n" 
+            + "   ........ MMMMMOOOOOOPPPPPPPPOOOOMII! ...\n"
+            + "    ....... MMMMM..    OPPMMP    .,OMI! ....\n" 
+            + "     ...... MMMM::   o.,OPMP,.o   ::I!! ...\n"
+            + "         .... NNM:::.,,OOPM!P,.::::!! ....\n" 
+            + "          .. MMNNNNNOOOOPMO!!IIPPO!!O! .....\n"
+            + "         ... MMMMMNNNNOO:!!:!!IPPPPOO! ....\n" 
+            + "           .. MMMMMNNOOMMNNIIIPPPOO!! ......\n"
+            + "          ...... MMMONNMMNNNIIIOO!..........\n" 
+            + "       ....... MN MOMMMNNNIIIIIO! OO ..........\n"
+            + "    ......... MNO! IiiiiiiiiiiiI OOOO ...........\n" 
+            + "  ...... NNN.MNO! . O!!!!!!!!!O . OONO NO! ........\n"
+            + "   .... MNNNNNO! ...OOOOOOOOOOO .  MMNNON!........\n" 
+            + "   ...... MNNNNO! .. PPPPPPPPP .. MMNON!........\n"
+            + "      ...... OO! ................. ON! .......\n" 
+            + "         ................................\n";
    
+<<<<<<< HEAD
    public static final String WIN_NOTIFICATION = "" + 
 "        ________                      __         ____.     ___.  ._.\n" +
 "         /  _____/______   ____ _____ _/  |_      |    | ____\\_ |__| |\n" +
@@ -54,6 +60,15 @@ public class Game
 "        \\    \\_\\  \\  | \\/\\  ___/ / __ \\|  |   /\\__|    (  <_> ) \\_\\ \\|\n" +
 "         \\______  /__|    \\___  >____  /__|   \\________|\\____/|___  /_\n" +
 "                \\/            \\/     \\/                           \\/\\/\n";
+=======
+   public static final String WIN_NOTIFICATION = ""
+            + "        ________                      __         ____.     ___.  ._.\n"
+            + "         /  _____/______   ____ _____ _/  |_      |    | ____\\_ |__| |\n"
+            + "        /   \\  __\\_  __ \\_/ __ \\\\__  \\\\   __\\     |    |/  _ \\| __ \\ |\n"
+            + "        \\    \\_\\  \\  | \\/\\  ___/ / __ \\|  |   /\\__|    (  <_> ) \\_\\ \\|\n"
+            + "         \\______  /__|    \\___  >____  /__|   \\________|\\____/|___  /_\n"
+            + "                \\/            \\/     \\/                           \\/\\/\n";
+>>>>>>> origin/master
    
    /**
     * Creates an instance of a game of Minesweeper
@@ -61,6 +76,7 @@ public class Game
     */
    public Game(int argCount, String[] args) throws DataFormatException
    {
+<<<<<<< HEAD
       try
       {
          switch (argCount)
@@ -86,6 +102,36 @@ public class Game
       }
       
       _hasDetonated = false;
+=======
+      switch (argCount)
+      {
+         case 0: 
+         {
+            _theField = new Field();
+         }
+         case 1: 
+         {
+            _theField = new Field(Integer.parseInt(args[0]));
+         }
+         case 2: 
+         {
+            _theField = new Field(Integer.parseInt(args[0]), Integer.parseInt(args[1])); 
+         }      
+         case 3: 
+         {
+            _theField = new Field(Integer.parseInt(args[0]),  Integer.parseInt(args[1]), Integer.parseInt(args[2]));
+         }    
+      }
+   }
+   
+   /**
+    * Singleton pattern. Only one instance of a game allowed.
+    * @return the game.
+    */
+   public static Game getTheGame()
+   {
+      return _theGame;
+>>>>>>> origin/master
    }
    
    /**
@@ -93,7 +139,7 @@ public class Game
     * 
     * @return a reference to the field
     */
-   public static Field getField()
+   public Field getField()
    {
       return _theField;
    }
@@ -176,6 +222,7 @@ public class Game
     * Returns a boolean indicating whether the game has been completed
     * @return a boolean indicating whether the game has been completed
     */
+<<<<<<< HEAD
    public boolean isOver()
    {
       boolean gameOver = _hasDetonated;
@@ -186,6 +233,11 @@ public class Game
       }
       
       return gameOver;
+=======
+   public void makeMove(int yRow, int xColumn)
+   {
+      _theField.revealTile(_theField.getTileAt(yRow, xColumn));
+>>>>>>> origin/master
    }
    
    /**
@@ -206,6 +258,7 @@ public class Game
     */
    public static void main(String[] args) throws DataFormatException
    {
+<<<<<<< HEAD
       Scanner in = new Scanner(System.in);
       Game theGame = new Game(args.length, args);
       int yMove;
@@ -255,6 +308,9 @@ public class Game
       theGame.resolveGame();
       
       System.out.println("Thanks for playing!");
+=======
+      _theGame = new Game(args.length, args);
+>>>>>>> origin/master
    }
    
 }
