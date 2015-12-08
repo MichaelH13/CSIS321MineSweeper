@@ -326,6 +326,13 @@ public class Field
       }
       outputString.append("-\n");
       
+      // Column numbers
+      for (int j = 0; j < _xColumns; j++)
+      {
+         outputString.append(String.format(" %2d ", j + 1));
+      }
+      outputString.append(" \n");
+      
       return outputString.toString();
    }
 }
