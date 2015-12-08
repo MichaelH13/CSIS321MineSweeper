@@ -15,7 +15,7 @@ public class Field
    private int _xColumns;
    private Tile[][] _field;
    
-   public static final int DEFAULT_BOMB_RATE = -1;
+   public static final int DEFAULT_BOMB_RATE = 15;
    public static final int DEFAULT_FIELD_SIZE = 7;
    
    // Return values for revealed tiles
@@ -304,14 +304,14 @@ public class Field
          outputString.append("-\n");
          
          // Open the row of tiles
-         outputString.append(i + 1);
+         outputString.append("|");
          
          // Row of pipe-separated tiles
          for (int j = 0; j < _xColumns; j++)
          {
             outputString.append(getTileAt(i, j).toString());
          }
-         outputString.append("\n");
+         outputString.append(" " + (i + 1) + "\n");
       }
       
       // Bottom border of dashes

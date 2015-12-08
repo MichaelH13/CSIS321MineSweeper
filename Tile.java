@@ -109,7 +109,8 @@ public class Tile
            if (!isBomb())
            {
               
-              bombToString = (" " + getVolatileNeighbors() + " |");
+              bombToString = (" " + (getVolatileNeighbors() == 0 ? " " : 
+                 getVolatileNeighbors()) + " |");
            }
            else
            {
