@@ -15,7 +15,7 @@ public class Field
    private int _xColumns;
    private Tile[][] _field;
    
-   public static final int DEFAULT_BOMB_RATE = -1;
+   public static final int DEFAULT_BOMB_RATE = 10;
    public static final int DEFAULT_FIELD_SIZE = 7;
    
    // Return values for revealed tiles
@@ -263,9 +263,12 @@ public class Field
          }
          else
          {
-            if (t.getVolatileNeighbors() == 0)
+            if (t.getVolatileNeighbors() > 0)
             {
-               
+               for (Tile neighbor : getNeighbors(current)
+			   {
+			   	   revealTile(current);
+			   }
             }
          }
       }
