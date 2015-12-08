@@ -19,8 +19,9 @@ public class Tile
         _x = xColumn;
         _isBomb = isBomb;
         
-        // Tile should start out not revealed
+        // Tile should start out not revealed or tagged as suspicious
         _isRevealed = false;
+        _isTaggedAsMine = false;
     }
     
     /**
@@ -44,6 +45,16 @@ public class Tile
     }
     
     /**
+     * Returns whether or not the player has tagged this tile as a possible mine
+     * @return a boolean indicating whether or not the user has flagged this 
+     * tile
+     */
+    public boolean isTaggedAsMine()
+    {
+       return _isTaggedAsMine;
+    }
+    
+    /**
      * A method to get the x coordinate of the tile
      *
      * @return The tile's x coordinate
@@ -63,6 +74,10 @@ public class Tile
         return _y;
     }
     
+    /**
+     * Counts how many neighbors of the tile are mines
+     * @return the nearby mine count
+     */
     public int getVolatileNeighbors()
     {
     // Get the neighbors of the Tile
@@ -90,6 +105,11 @@ public class Tile
        _isRevealed = true;
     }
     
+    public void flipFlag()
+    {
+       _isTaggedAsMine = !_isTaggedAsMine;
+    }
+    
     /**
      * A method to get the string representation of the Tile
      *
@@ -97,11 +117,11 @@ public class Tile
      */
     public String toString()
     {   
-        String bombToString = " # |";
+        String bombToString = " . |";
         
         /*
          * If the tile has been revealed, count the number of neighbors that 
-         * are bombs if the space itself is not a bomb. Otherwise, just 
+         * are bombs if the space itself is not a bomb. If the space is a bomb, 
          * display a "!"
          */
         if (_isRevealed)
@@ -117,6 +137,10 @@ public class Tile
               bombToString = (" ! |");
            }
         }
+        else if (_isTaggedAsMine)
+        {
+           bombToString = (" ? |");
+        }
         
         // Return the string representation of the tile
         return bombToString;
@@ -124,6 +148,7 @@ public class Tile
     
     private boolean _isBomb;
     private boolean _isRevealed;
+    private boolean _isTaggedAsMine;
     private int _x;
     private int _y;
 }

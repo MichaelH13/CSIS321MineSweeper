@@ -71,14 +71,18 @@ public class Field
    /**
     * Returns the tile at given coordinates
     * 
-    * @
+    * @return the requested tile
     */
    public Tile getTileAt(int yRow, int xColumn)
    {
       return _field[yRow][xColumn];
    }
    
-   
+   /**
+    * Returns the neighbors of a given tile
+    * @param t a tile to find the neighbors of
+    * @return an array of the given tile's neighbors
+    */
    public Tile[] getNeighbors(Tile t)
    {
       Tile[] neighbors = null;
@@ -257,6 +261,7 @@ public class Field
          }
          else
          {
+            // If the tile is not bomb-adjacent, reveal its neighbors
             if (t.getVolatileNeighbors() == 0)
             {
                for (Tile neighbor : getNeighbors(t))
