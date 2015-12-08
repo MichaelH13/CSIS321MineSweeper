@@ -15,8 +15,10 @@ public class Field
    private int _xColumns;
    private Tile[][] _field;
    
-   public static final int DEFAULT_BOMB_RATE = 15;
-   public static final int DEFAULT_FIELD_SIZE = 7;
+   public static final int DEFAULT_BOMB_RATE = 10;
+   public static final int DEFAULT_FIELD_SIZE = 10;
+   
+   public static final int MAX_FIELD_WIDTH = 18;
    
    // Return values for revealed tiles
    public static final int TILE_REVEALED_NORMAL = 0;
@@ -53,7 +55,7 @@ public class Field
    public Field(int yRows, int xColumns, int minePercentage)
    {
       _yRows = yRows;
-      _xColumns = xColumns;
+      _xColumns = xColumns <= MAX_FIELD_WIDTH ? xColumns : MAX_FIELD_WIDTH;
       _field = new Tile[_yRows][_xColumns];
       Random random = new Random();
 
