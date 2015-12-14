@@ -97,35 +97,35 @@ public class Field
       {
          neighbors = new Tile[3];
          
+         // If we are at the top left corner Tile...
          if (t.getX() == 0 && t.getY() == 0)
          {
-            neighbors[0] = getTileAt(0,1); 
-            neighbors[1] = getTileAt(1,1); 
-            neighbors[2] = getTileAt(1,0); 
+            neighbors[0] = getTileAt(0, 1); 
+            neighbors[1] = getTileAt(1, 1); 
+            neighbors[2] = getTileAt(1, 0); 
          }
-         
+         // If we are at the top right corner...
          else if (t.getX() == _xColumns - 1 && t.getY() == 0)
          {
-            neighbors[0] = getTileAt(1,t.getX() - 1); 
-            neighbors[1] = getTileAt(1,t.getX() - 2); 
-            neighbors[2] = getTileAt(0,t.getX() - 1); 
+            neighbors[0] = getTileAt(0, t.getX() - 1); 
+            neighbors[1] = getTileAt(1, t.getX() - 1); 
+            neighbors[2] = getTileAt(1, t.getX() - 0);
          }
-         
+         // If we are at the bottom right corner.
          else if (t.getX() == _xColumns - 1 && t.getY() == _yRows - 1)
          {
-            neighbors[0] = getTileAt(t.getY()-1, t.getX() - 2); 
-            neighbors[1] = getTileAt(t.getY()-2, t.getX() - 2); 
-            neighbors[2] = getTileAt(t.getY()-2, t.getX() - 1); 
+            neighbors[0] = getTileAt(t.getY(), t.getX() - 1); 
+            neighbors[1] = getTileAt(t.getY() - 1, t.getX() - 1); 
+            neighbors[2] = getTileAt(t.getY() - 1, t.getX()); 
          } 
-         
+         // If we are at the bottom left corner.
          else if (t.getX() == 0 && t.getY() == _yRows - 1)
          {
-            neighbors[0] = getTileAt(t.getY()-2, 0); 
-            neighbors[1] = getTileAt(t.getY()-2, 1); 
-            neighbors[2] = getTileAt(t.getY()-1, 1); 
-         } 
+            neighbors[0] = getTileAt(t.getY() - 0, 1);
+            neighbors[1] = getTileAt(t.getY() - 1, 1); 
+            neighbors[2] = getTileAt(t.getY() - 1, 0); 
+         }
       } 
-      
       
       // If the Tile t is at the edge of the field, it has 5 neighbors. 
       else if (t.getY() == 0 
@@ -177,14 +177,14 @@ public class Field
       {
          neighbors = new Tile[8];
          
-         neighbors[0] = getTileAt(t.getY()-1, t.getX()-1);
-         neighbors[1] = getTileAt(t.getY()-1, t.getX());
-         neighbors[2] = getTileAt(t.getY()-1, t.getX()+1);
-         neighbors[3] = getTileAt(t.getY(), t.getX()+1);
-         neighbors[4] = getTileAt(t.getY()+1, t.getX()+1);
-         neighbors[5] = getTileAt(t.getY()+1, t.getX());
-         neighbors[6] = getTileAt(t.getY()+1, t.getX()-1);
-         neighbors[7] = getTileAt(t.getY(), t.getX()-1);
+         neighbors[0] = getTileAt(t.getY() - 1, t.getX() - 1);
+         neighbors[1] = getTileAt(t.getY() - 1, t.getX());
+         neighbors[2] = getTileAt(t.getY() - 1, t.getX() + 1);
+         neighbors[3] = getTileAt(t.getY(), t.getX() + 1);
+         neighbors[4] = getTileAt(t.getY() + 1, t.getX() + 1);
+         neighbors[5] = getTileAt(t.getY() + 1, t.getX());
+         neighbors[6] = getTileAt(t.getY() + 1, t.getX() - 1);
+         neighbors[7] = getTileAt(t.getY(), t.getX() - 1);
       } // else
       
       return neighbors;
@@ -254,7 +254,7 @@ public class Field
       
       if (!t.isRevealed())
       {
-      // If the tile was not revealed before, it is now
+         // If the tile was not revealed before, it is now
          t.reveal(); 
          
          if (t.isBomb())

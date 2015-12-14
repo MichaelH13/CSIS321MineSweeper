@@ -117,7 +117,7 @@ public class Tile
      */
     public String toString()
     {   
-        String bombToString = " . |";
+        String bombToString = "   |";
         
         /*
          * If the tile has been revealed, count the number of neighbors that 
@@ -129,7 +129,7 @@ public class Tile
            if (!isBomb())
            {
               
-              bombToString = (" " + (getVolatileNeighbors() == 0 ? " " : 
+              bombToString = (" " + (getVolatileNeighbors() == 0 ? "." : 
                  getVolatileNeighbors()) + " |");
            }
            else
@@ -139,7 +139,7 @@ public class Tile
         }
         else if (_isTaggedAsMine)
         {
-           bombToString = (" ? |");
+           bombToString = (" \u2691 |");
         }
         
         // Return the string representation of the tile
